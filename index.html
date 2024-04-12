@@ -12,25 +12,23 @@
         "https://cdn.glitch.me/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg";
 
       let buttonCallback = function (t, opts) {
-        let retrieveBranchName = function (t, opts) {
-          let cardNumber = 1;
-          let projectPrefix = "AB";
-          let type = "feature";
-          return (
-            type +
-            "/" +
-            projectPrefix +
-            "-" +
-            cardNumber +
-            "-" +
-            t.card.name.replaceAll(" ", "-").toLowerCase()
-          );
-        };
+        let cardNumber = 1;
+        let projectPrefix = "AB";
+        let type = "feature";
+        console.log(t);
+        console.log(t.card);
 
-        let BRANCH_NAME = retrieveBranchName(t, opts);
+        let BRANCH_NAME =
+          type +
+          "/" +
+          projectPrefix +
+          "-" +
+          cardNumber +
+          "-" +
+          t.card.name.replaceAll(" ", "-").toLowerCase();
 
         let onItemClick = function (t, opts) {
-          navigator.clipboard.writeText(BRANCH_NAME);
+          console.log(t.board);
           BRANCH_NAME = "Branch copied!";
         };
 
@@ -50,7 +48,7 @@
           return [
             {
               icon: ICON,
-              text: "Branch 2",
+              text: "Branch 3",
               callback: buttonCallback,
             },
           ];
