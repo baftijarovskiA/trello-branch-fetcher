@@ -8,20 +8,44 @@
   <body>
     <script src="https://p.trellocdn.com/power-up.min.js"></script>
     <script>
-      let buttonTitle = "Copy Branch";
+      let ICON =
+        "https://cdn.glitch.me/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg";
+
+      let buttonTitle = "Copy Branch 1";
       let onBtnClick = function (t, opts) {
         buttonTitle = "Copied";
         console.log({ t, opts });
+      };
+
+      let onItemClick = function (t, opts) {
+        console.log({ t, opts });
+      };
+
+      let btnCallback = function (t, opts) {
+        return t.popup({
+          title: "Branch Name",
+          items: [
+            {
+              text: "Copy branch name",
+              callback: onItemClick,
+            },
+          ],
+        });
       };
 
       window.TrelloPowerUp.initialize({
         "card-buttons": function (t, opts) {
           return [
             {
-              icon: "https://cdn.glitch.me/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg",
+              icon: ICON,
               text: buttonTitle,
               callback: onBtnClick,
               condition: "always",
+            },
+            {
+              icon: ICON,
+              text: "Branch 1",
+              callback: btnCallback,
             },
           ];
         },
