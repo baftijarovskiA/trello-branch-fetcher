@@ -12,11 +12,11 @@
         "https://cdn.glitch.me/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg";
 
       let onItemClick = function (t, opts) {
-        console.log(t.board());
-        console.log(t.card());
+        console.log("clicked", t);
       };
 
       let buttonCallback = function (t, opts) {
+        console.log(t.card.name);
         return t.popup({
           title: "Branch Name",
           items: [
@@ -33,7 +33,7 @@
           return [
             {
               icon: ICON,
-              text: "Branch 4",
+              text: "Branch 5",
               callback: buttonCallback,
             },
           ];
