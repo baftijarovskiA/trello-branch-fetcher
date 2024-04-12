@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Branch</title>
+  </head>
+  <body>
+    <script src="https://p.trellocdn.com/power-up.min.js"></script>
+    <script>
+      TrelloPowerUp.initialize({
+        "card-buttons": function (t, options) {
+          return [
+            {
+              icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzcJv3eJ5a6DAiw2VgfO9jrodW3abvfZkAktD7i8VPsQ&s",
+              text: "Branch",
+              callback: (tc) =>
+                tc.popup({
+                  title: "Branch Name",
+                  url: "./card-button.html",
+                  height: 150,
+                }),
+            },
+          ];
+        },
+      });
+    </script>
+  </body>
+</html>

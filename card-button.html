@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Branch</title>
+  </head>
+  <body>
+    <div id="container">
+      <p>Copy the suggested branch name.</p>
+      <label htmlFor="branch">Branch</label>
+      <input
+        className="branch-field"
+        value="loading..."
+        disabled
+        id="branch"
+        name="branch"
+      />
+      <button
+        title="Copy branch name"
+        className="mod-primary"
+        onClick="{onCopy}"
+      >
+        Copy
+      </button>
+    </div>
+
+    <script>
+      let trello = window.TrelloPowerUp.iframe();
+      document.getElementById("branch").innerHTML = trello.card.name;
+    </script>
+  </body>
+</html>
