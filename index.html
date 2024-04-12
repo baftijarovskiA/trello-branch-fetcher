@@ -12,11 +12,17 @@
         "https://cdn.glitch.me/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg";
 
       let onItemClick = function (t, opts) {
-        console.log("clicked", t);
+        console.log("CARD---");
+        console.log(t.card("name"));
+        console.log(t.card("shortLink"));
+        console.log(t.card("labels"));
+        console.log(t.card("url"));
+        console.log("BOARD---");
+        console.log(t.board("name"));
+        console.log(t.card("shortLink"));
       };
 
       let buttonCallback = function (t, opts) {
-        console.log(t.card.name);
         return t.popup({
           title: "Branch Name",
           items: [
