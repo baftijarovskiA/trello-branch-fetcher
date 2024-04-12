@@ -12,14 +12,18 @@
         "https://cdn.glitch.me/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg";
 
       let onItemClick = function (t, opts) {
-        console.log("CARD---");
-        console.log(t.card("name"));
-        console.log(t.card("shortLink"));
-        console.log(t.card("labels"));
-        console.log(t.card("url"));
-        console.log("BOARD---");
-        console.log(t.board("name"));
-        console.log(t.card("shortLink"));
+        const card = t.card("labels", "url");
+        const cardUrl = card.get("url");
+        const cardLabels = card.get("labels");
+
+        const board = t.board("name");
+        const boardName = board.get("name");
+
+        console.log({
+          cardUrl,
+          cardLabels,
+          boardName,
+        });
       };
 
       let buttonCallback = function (t, opts) {
