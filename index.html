@@ -41,17 +41,17 @@
                     const BRANCH_NAME =
                       TICKET_TYPE + "" + BOARD_PREFIX + "-" + CARD_URL;
 
-                    return t.popup({
-                      type: "confirm",
-                      title: "Branch Name",
-                      message: TICKET_TYPE + "" + BOARD_PREFIX + "-" + CARD_URL,
-                      confirmText: "Done",
-                      onConfirm: () => t.closePopup(),
-                      confirmStyle: "primary",
-                    });
+                    // return t.popup({
+                    //   type: "confirm",
+                    //   title: "Branch Name",
+                    //   message: TICKET_TYPE + "" + BOARD_PREFIX + "-" + CARD_URL,
+                    //   confirmText: "Done",
+                    //   onConfirm: () => t.closePopup(),
+                    //   confirmStyle: "primary",
+                    // });
 
                     return t.popup({
-                      title: "Change Snooze Time",
+                      title: "Branch Name",
                       url: "./popup.html",
                       args: { myArgs: "You can access these with t.arg()" },
                       height: 278, // initial height, can be changed later
