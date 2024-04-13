@@ -21,7 +21,6 @@
           .board("name")
           .get("name")
           .then((name) => {
-            console.log("Board name: ", name);
             const BOARD_PREFIX = name.split("[").pop().replace("]", "");
 
             return t
@@ -30,16 +29,21 @@
               .then((url) => {
                 const CARD_URL = url.split("/").pop();
                 const BRANCH_NAME = BOARD_PREFIX + "-" + CARD_URL;
+                return t
+                  .card("labels")
+                  .get("labels")
+                  .then((labels) => {
+                    console.log(labels);
 
-                return t.popup({
-                  title: "Branch Name",
-                  items: [
-                    {
-                      text: BRANCH_NAME,
-                      callback: onItemClick(BRANCH_NAME),
-                    },
-                  ],
-                });
+                    return t.popup({
+                      title: "Branch Name",
+                      items: [
+                        {
+                          text: BRANCH_NAME,
+                        },
+                      ],
+                    });
+                  });
               });
           });
       };
