@@ -11,12 +11,12 @@
       let ICON =
         "https://cdn.glitch.me/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg";
 
-      let buttonCallback = function (t, opts) {
-        let onItemClick = function (branchName) {
-          window.navigator.clipboard.writeText(branchName);
-          alert("Branch copied!");
-        };
+      let onItemClick = function (branchName) {
+        window.navigator.clipboard.writeText(branchName);
+        alert("Branch copied!");
+      };
 
+      let buttonCallback = function (t, opts) {
         return t
           .board("name")
           .get("name")
@@ -27,7 +27,7 @@
             return t
               .card("url")
               .get("url")
-              .then((url, labels) => {
+              .then((url) => {
                 const CARD_URL = url.split("/").pop();
                 const BRANCH_NAME = BOARD_PREFIX + "-" + CARD_URL;
 
