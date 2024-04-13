@@ -11,31 +11,25 @@
       let ICON =
         "https://cdn.glitch.me/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg";
 
-      let onItemClick = function (t, opts) {
-        const card = t.card("labels", "url");
-        const cardUrl = card.get("url");
-        const cardLabels = card.get("labels");
-
-        const board = t.board("name");
-        const boardName = board.get("name");
-
-        console.log({
-          cardUrl,
-          cardLabels,
-          boardName,
-        });
-      };
-
       let buttonCallback = function (t, opts) {
-        return t.popup({
-          title: "Branch Name",
-          items: [
-            {
-              text: "Copy branch name",
-              callback: onItemClick,
-            },
-          ],
-        });
+        let onItemClick = function (t, opts) {
+          alert("Copied!");
+        };
+
+        return t
+          .card("url")
+          .get("url")
+          .then((url) => {
+            return t.popup({
+              title: "Branch Name",
+              items: [
+                {
+                  text: url,
+                  callback: onItemClick,
+                },
+              ],
+            });
+          });
       };
 
       window.TrelloPowerUp.initialize({
