@@ -10,12 +10,11 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        width: 400px;
+        width: 280px;
       }
 
       .copy-section {
-        background-color: #fff;
-        padding: 10px 20px;
+        padding: 20px 10px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -23,31 +22,33 @@
 
       .copy-text {
         border: 1px solid rgba(0, 0, 0, 0.1);
-        margin-right: 10px;
-        padding: 5px 8px;
-        max-width: 240px;
+        border-right: 0;
+        border-radius: 8px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        background-color: #ffffff;
+        padding: 5px 10px;
+        width: 100%;
+        font-size: 12px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-      }
-
-      .copy-value {
-        width: 240px;
-        text-overflow: ellipsis " [..]";
       }
 
       .copy-button {
         border: none;
         background-color: #ffffff;
         color: black;
-        padding: 6px 12px;
+        padding: 5px 10px;
         text-align: center;
         text-decoration: none;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 16px;
-        border-radius: 10px;
+        font-size: 12px;
+        border-radius: 8px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
         border: 1px solid rgba(0, 0, 0, 0.1);
         cursor: pointer;
         transition: background-color 0.3s;
@@ -62,18 +63,18 @@
   <body>
     <div class="copy-section main">
       <div class="copy-text">
-        <code id="branch-name" class="copy-value"
-          >GC-1234-some-example-with-lager-text</code
-        >
+        <code id="branch-name">GC-1234-some-example-with-lager-text</code>
       </div>
       <button class="copy-button" onclick="onCopy()">
         <span class="copy-icon">
-          <img src="icon.svg" style="width: 15px; height: 15px" />
+          <img src="icon.svg" style="width: 14px; height: 14px" />
         </span>
         <span id="copy-title">Copy</span>
       </button>
     </div>
     <script>
+      let t = window.TrelloPowerUp.iframe();
+      console.log(t.args());
       function onCopy() {
         let branchName = document.getElementById("branch-name");
         navigator.clipboard.writeText(branchName.innerHTML);
