@@ -11,7 +11,7 @@
       const ICON =
         "https://cdn.glitch.me/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg";
 
-      const copyBranch = function (branch) {
+      const copyBranch = (branch) => {
         window.focus();
         navigator.clipboard
           .writeText(branch)
@@ -54,9 +54,7 @@
                       title: "Branch Name",
                       message: TICKET_TYPE + "" + BOARD_PREFIX + "-" + CARD_URL,
                       confirmText: "Copy",
-                      onConfirm: () => {
-                        copyBranch(BRANCH_NAME);
-                      },
+                      onConfirm: () => copyBranch(BRANCH_NAME),
                       confirmStyle: "primary",
                     });
                   });
