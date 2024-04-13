@@ -8,10 +8,18 @@
   <body>
     <script src="https://p.trellocdn.com/power-up.min.js"></script>
     <script>
-      let ICON =
+      const ICON =
         "https://cdn.glitch.me/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg";
 
-      let buttonCallback = function (t, opts) {
+      const copyBranch = function (branch) {
+        window.focus();
+        navigator.clipboard
+          .writeText(branch)
+          .then(() => console.log("Text copied to clipboard"))
+          .catch((err) => console.error("Failed to copy text: ", err));
+      };
+
+      const buttonCallback = function (t, opts) {
         return t
           .board("name")
           .get("name")
@@ -47,7 +55,7 @@
                       message: TICKET_TYPE + "" + BOARD_PREFIX + "-" + CARD_URL,
                       confirmText: "Copy",
                       onConfirm: () => {
-                        navigator.clipboard.writeText(BRANCH_NAME);
+                        copyBranch(BRANCH_NAME);
                       },
                       confirmStyle: "primary",
                     });
@@ -61,7 +69,7 @@
           return [
             {
               icon: ICON,
-              text: "Branch 7",
+              text: "Branch 8",
               callback: buttonCallback,
             },
           ];
