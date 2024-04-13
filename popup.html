@@ -51,7 +51,6 @@
         border-bottom-left-radius: 0;
         border: 1px solid rgba(0, 0, 0, 0.1);
         cursor: pointer;
-        transition: background-color 0.3s;
       }
 
       .copy-icon {
@@ -75,7 +74,7 @@
     </div>
     <script>
       let t = window.TrelloPowerUp.iframe();
-      console.log(t.args());
+      console.log(t.arg());
       function onCopy() {
         let branchName = document.getElementById("branch-name");
         navigator.clipboard.writeText(branchName.innerHTML);
