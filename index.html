@@ -19,14 +19,16 @@
         return t
           .board("name")
           .get("name")
-          .then((boardName) => {
-            console.log("Board name: ", boardName);
+          .then((name) => {
+            console.log("Board name: ", name);
             // get the prefix
             return t
-              .card("name", "labels")
-              .get("name", "labels")
-              .then((items) => {
-                console.log("items", items);
+              .card("url", "labels")
+              .get("url", "labels")
+              .then((url, labels) => {
+                console.log("Card name", url);
+                console.log("Card labels", labels);
+
                 // get the url
                 return t.popup({
                   title: "Branch Name",
@@ -46,7 +48,7 @@
           return [
             {
               icon: ICON,
-              text: "Branch 5",
+              text: "Branch 6",
               callback: buttonCallback,
             },
           ];
