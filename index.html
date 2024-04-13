@@ -17,18 +17,27 @@
         };
 
         return t
-          .card("url")
-          .get("url")
-          .then((url) => {
-            return t.popup({
-              title: "Branch Name",
-              items: [
-                {
-                  text: url,
-                  callback: onItemClick,
-                },
-              ],
-            });
+          .board("name")
+          .get("name")
+          .then((boardName) => {
+            console.log("Board name: ", boardName);
+            // get the prefix
+            return t
+              .card("name", "labels")
+              .get("name", "labels")
+              .then((items) => {
+                console.log("items", items);
+                // get the url
+                return t.popup({
+                  title: "Branch Name",
+                  items: [
+                    {
+                      text: "branch-to-copy",
+                      callback: onItemClick,
+                    },
+                  ],
+                });
+              });
           });
       };
 
