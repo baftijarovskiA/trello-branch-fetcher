@@ -12,8 +12,9 @@
         "https://cdn.glitch.me/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg";
 
       let buttonCallback = function (t, opts) {
-        let onItemClick = function (t, opts) {
-          alert("Copied!");
+        let onItemClick = function (branchName) {
+          window.navigator.clipboard.writeText(branchName);
+          alert("Branch copied!");
         };
 
         return t
@@ -21,21 +22,21 @@
           .get("name")
           .then((name) => {
             console.log("Board name: ", name);
-            // get the prefix
-            return t
-              .card("url", "labels")
-              .get("url", "labels")
-              .then((url, labels) => {
-                console.log("Card name", url);
-                console.log("Card labels", labels);
+            const BOARD_PREFIX = name.split("[").pop().replace("]", "");
 
-                // get the url
+            return t
+              .card("url")
+              .get("url")
+              .then((url, labels) => {
+                const CARD_URL = url.split("/").pop();
+                const BRANCH_NAME = BOARD_PREFIX + "-" + CARD_URL;
+
                 return t.popup({
                   title: "Branch Name",
                   items: [
                     {
-                      text: "branch-to-copy",
-                      callback: onItemClick,
+                      text: BRANCH_NAME,
+                      callback: onItemClick(BRANCH_NAME),
                     },
                   ],
                 });
