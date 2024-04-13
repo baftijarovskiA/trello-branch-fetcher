@@ -11,11 +11,6 @@
       let ICON =
         "https://cdn.glitch.me/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg";
 
-      let onItemClick = function (branchName) {
-        window.navigator.clipboard.writeText(branchName);
-        alert("Branch copied!");
-      };
-
       let buttonCallback = function (t, opts) {
         return t
           .board("name")
@@ -28,20 +23,31 @@
               .get("url")
               .then((url) => {
                 const CARD_URL = url.split("/").pop();
-                const BRANCH_NAME = BOARD_PREFIX + "-" + CARD_URL;
+
                 return t
                   .card("labels")
                   .get("labels")
                   .then((labels) => {
                     console.log(labels);
+                    const labelsToString = labels.join(",").toLowerCase();
+                    const TICKET_TYPE = labelsToString.includes("feature")
+                      ? "feature/"
+                      : labelsToString.includes("bug")
+                      ? "bugfix/"
+                      : "";
+
+                    const BRANCH_NAME =
+                      TICKET_TYPE + "" + BOARD_PREFIX + "-" + CARD_URL;
 
                     return t.popup({
+                      type: "confirm",
                       title: "Branch Name",
-                      items: [
-                        {
-                          text: BRANCH_NAME,
-                        },
-                      ],
+                      message: TICKET_TYPE + "" + BOARD_PREFIX + "-" + CARD_URL,
+                      confirmText: "Copy",
+                      onConfirm: () => {
+                        navigator.clipboard.writeText(BRANCH_NAME);
+                      },
+                      confirmStyle: "primary",
                     });
                   });
               });
@@ -53,7 +59,7 @@
           return [
             {
               icon: ICON,
-              text: "Branch 6",
+              text: "Branch 7",
               callback: buttonCallback,
             },
           ];
