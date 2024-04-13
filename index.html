@@ -28,8 +28,10 @@
                   .card("labels")
                   .get("labels")
                   .then((labels) => {
-                    console.log(labels);
-                    const labelsToString = labels.join(",").toLowerCase();
+                    const labelsToString = labels
+                      .map((l) => l.name)
+                      .join(",")
+                      .toLowerCase();
                     const TICKET_TYPE = labelsToString.includes("feature")
                       ? "feature/"
                       : labelsToString.includes("bug")
