@@ -11,14 +11,6 @@
       const ICON =
         "https://cdn.glitch.me/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg";
 
-      const copyBranch = (branch) => {
-        window.focus();
-        navigator.clipboard
-          .writeText(branch)
-          .then(() => console.log("Text copied to clipboard"))
-          .catch((err) => console.error("Failed to copy text: ", err));
-      };
-
       const buttonCallback = function (t, opts) {
         return t
           .board("name")
@@ -53,9 +45,16 @@
                       type: "confirm",
                       title: "Branch Name",
                       message: TICKET_TYPE + "" + BOARD_PREFIX + "-" + CARD_URL,
-                      confirmText: "Copy",
-                      onConfirm: () => copyBranch(BRANCH_NAME),
+                      confirmText: "Done",
+                      onConfirm: () => t.closePopup(),
                       confirmStyle: "primary",
+                    });
+
+                    return t.popup({
+                      title: "Change Snooze Time",
+                      url: "./popup.html",
+                      args: { myArgs: "You can access these with t.arg()" },
+                      height: 278, // initial height, can be changed later
                     });
                   });
               });
